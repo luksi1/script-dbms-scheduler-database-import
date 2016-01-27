@@ -33,5 +33,22 @@ THE JOB HERE WILL TRUNCATE THE EXISTING SCHEMA YOU HAVE IN YOUR DESTINATION NODE
 sqlplus "/as sysdba" @create.import.job.sql
 ```
 
+To run your job immediately:
+```
+$ sqlplus "/as sysdba" @run.job.sql
+```
+or simply connect to sqlplus as your backup user:
+```
+sqlplus> EXEC DBMS_SCHEDULER.RUN_JOB('<insert name of job here'>);
+```
+
+To run drop your job (you will need to drop your job in case the your import job fails):
+```
+$ sqlplus "/as sysdba" @drop.job.sql
+```
+or simply connect to sqlplus as your backup user:
+```
+sqlplus> EXEC DBMS_SCHEDULER.DROP_JOB('<insert name of job here'>);
+```
 ## Author
 Luke Simmons
