@@ -11,7 +11,7 @@ Instead of using cron (nothing against cron) you should keep your Oracle databas
 
 Moreover, performing an import/export via DBMS scheduler and database links reduces time and space. 
 
-Frankly though, it seems a bit kludgy to run a script from cron to export something locally, scp it over to another place and then either run a remote command to import the dump or have another cronjob on the destination side handling it. This is, in my opinion, the superior way to move data regularly from one database to another.
+Frankly though, it is kludgy to run a script from cron to export something locally, scp it over to another place and then either run a remote command to import the dump or have another cronjob on the destination side handling it. This is, in my opinion, the superior way to move data regularly from one database to another.
 
 ## Using
 Make sure you have a connection between the servers you will be using for the export and the import. The requires an entry in tnsnames.ora. Be sure you can ping both nodes:
