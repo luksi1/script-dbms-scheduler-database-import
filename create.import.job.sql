@@ -4,18 +4,7 @@ Date: 2015-09-30
 Description: Import a database schema via a database link. This script will create your user, database link and entry for the scheduler
 */
 
-/* Create the appropriate users on each side of the database. That means you will need to create the same user on the remote end! */
-create directory backup as '&&backup_directory';
-create user &&username identified by &&password;
-grant create session, connect, resource,create table to &&username;
-grant read, write on directory backup to &&username;
-grant EXP_FULL_DATABASE to &&username;
-grant IMP_FULL_DATABASE to &&username;
-grant SCHEDULER_ADMIN TO &&username;
-alter user &&username quota unlimited on users;
-
-create directory backup as '&&backup_directory';
-
+/* This is the user that will be performing the import/export. This user should have the correct permissions for impdp and expdp.*/
 conn &&username/&&password
 
 create database link &&database_link connect to &&username identified by &&password using '&&remote_sid';
