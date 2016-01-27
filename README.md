@@ -14,7 +14,7 @@ Moreover, performing an import/export via DBMS scheduler and database links redu
 Frankly though, it seems a bit kludgy to run a script from cron to export something locally, scp it over to another place and then either run a remote command to import the dump or have another cronjob on the destination side handling it. This is, in my opinion, the superior way to move data regularly from one database to another.
 
 ## Using
-Create the appropriate users on each node that will be involved, regardless of whether they will be performing the export or import. This needs to be the same user and have the same permission. This script should help you accomplish this goal. "&&" is simply an sqlplus variable so that you can insert the appropriate information.
+Create the appropriate users on each node that will be involved, regardless of whether they will be performing the export or import. This needs to be the same user and have the same permission. This script should help you accomplish this goal. "&&" is simply an sqlplus variable you can use to insert the appropriate information.
 
 ```
 sqlplus "/as sysdba" @create.user.db.link.sql
