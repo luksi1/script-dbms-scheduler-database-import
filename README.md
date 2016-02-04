@@ -19,15 +19,15 @@ Make sure you have a connection between the servers you will be using for the ex
 $ tnsping <insert into your tnsnames.ora entry here>
 ```
 
-Create the appropriate users on each node that will be involved, regardless of whether they will be performing the export or import. This needs to be the same user and have the same permission. This script should help you accomplish this goal. "&&" is simply an sqlplus variable you can use to insert the appropriate information.
+Create the appropriate users on each node that will be involved, regardless of whether they will be performing the export or import. This needs to be the same user and have the same permission. 
+
+Create the database link.
 
 ```
 sqlplus "/as sysdba" @create.user.db.link.sql
 ```
 
-Then, you'll need to create the database link, create the job and schedule it. This would be done on the destination node. You'll simply be pulling the data via a impdp.
-
-THE JOB HERE WILL TRUNCATE THE EXISTING SCHEMA YOU HAVE IN YOUR DESTINATION NODE!!
+And then create the import job. THE JOB HERE WILL TRUNCATE THE EXISTING SCHEMA YOU HAVE IN YOUR DESTINATION NODE!!
 
 ```
 sqlplus "/as sysdba" @create.import.job.sql
